@@ -13,6 +13,7 @@ const App = () => {
       let temp=  await axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${term}&appid=0bbb9949bea044992ad8cfe3859cca57&units=imperial`)
     console.log(temp.data)
     Setdata(temp.data)
+    document.getElementsByTagName('input')[0].value=''
   
   }
     catch(error){
@@ -26,7 +27,7 @@ const App = () => {
 
   return (
     <div>
-        <input type='text' className="search" onChange={(event)=>Setterm(event.target.value)} value={JSON.stringify(data).length!=2 ? '' : term}></input>
+        <input type='text' className="search" onChange={(event)=>Setterm(event.target.value)}></input>
       { JSON.stringify(data).length!=2 && <div className="weather"> {data.name}
                                           <div>{data.main.temp+'F'}</div>
                                           <div>{data.weather[0].description}</div>
