@@ -52,7 +52,7 @@ const App = () => {
   let [data, setData] = useState("");
  
   useEffect(() => {
-    const delayDebounceFn = setTimeout(() => {
+    (() => {
       console.log(search)
       // Send Axios request here
       fetch(`https://api.openweathermap.org/data/2.5/weather?q=${search}&appid=${API_KEY}`)
@@ -66,9 +66,7 @@ const App = () => {
       .catch((error) => {
         console.log(error.message)
       })
-    }, 1000)
- 
-    return () => clearTimeout(delayDebounceFn)
+    })()
   }, [search])
  
   return (
