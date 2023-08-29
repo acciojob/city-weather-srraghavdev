@@ -18,7 +18,7 @@ const App = () => {
   }
     catch(error){
       Setdata({})
-      console.log(error)
+
     }
   }
     )()
